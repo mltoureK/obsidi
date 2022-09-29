@@ -1,0 +1,2 @@
+# obsidi
+Obsidian Bootcamp Repository
