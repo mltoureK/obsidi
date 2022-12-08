@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class UserService {
@@ -19,10 +18,8 @@ public class UserService {
     private UserRepository userRepository;
 
     public void validateUserId(String username) throws InvalidUserNameException {
-
-        List<UserID> userIDList = userRepository.findByUsername(username);
-
-        if (userIDList == null || userIDList.isEmpty()) {
+        UserID userID = (UserID) userRepository.findByUsername(username);
+        if (userID == null) {
             LOGGER.error("Username={} doesn't exist", username);
             throw new InvalidUserNameException("Username doesn't exist");
         } else {
